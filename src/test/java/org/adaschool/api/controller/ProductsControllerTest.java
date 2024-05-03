@@ -88,8 +88,8 @@ public class ProductsControllerTest {
 
     @Test
     public void testUpdateExistingProduct() throws Exception {
-        Product Product = new Product("1", "Whole Milk", "Whole Milk 200ml", "Dairy", 15.488);
-        when(productsService.findById("1")).thenReturn(Optional.of(Product));
+        Product product = new Product("1", "Whole Milk", "Whole Milk 200ml", "Dairy", 15.488);
+        when(productsService.findById("1")).thenReturn(Optional.of(product));
 
         String json = "{\"name\":\"Whole Milk\",\"description\":\"Whole Milk 200ml\",\"category\":\"Dairy\",\"price\":15.488}";
         mockMvc.perform(put(BASE_URL + "1")
@@ -97,7 +97,7 @@ public class ProductsControllerTest {
                         .content(json))
                 .andExpect(status().isOk());
 
-        verify(productsService, times(1)).save(Product);
+        verify(productsService, times(1)).update(any(), anyString());
     }
 
     @Test

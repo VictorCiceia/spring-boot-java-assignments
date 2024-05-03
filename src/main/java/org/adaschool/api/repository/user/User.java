@@ -13,12 +13,28 @@ public class User {
     private String email;
     private String passwordHash;
 
+    public User() {
+        this.id = "";
+        this.createdAt = new Date();
+        this.name = "";
+        this.lastName = "";
+        this.email = "";
+        this.passwordHash = "";
+    }
+
     public User(String id, String name, String lastName, String email, String password) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.email = email;
         this.passwordHash = new BCryptPasswordEncoder().encode(password);
+        this.createdAt = new Date();
+    }
+
+    public User(String id, String name, String lastName) {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
         this.createdAt = new Date();
     }
 

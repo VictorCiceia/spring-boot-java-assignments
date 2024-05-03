@@ -98,7 +98,7 @@ public class UsersControllerTest {
                         .content(json))
                 .andExpect(status().isOk());
 
-        verify(usersService, times(1)).save(user);
+        verify(usersService, times(1)).update(any(), anyString());
     }
 
     @Test
@@ -113,7 +113,7 @@ public class UsersControllerTest {
                 .andExpect(result -> assertTrue(result.getResolvedException() instanceof UserNotFoundException))
                 .andExpect(result -> assertEquals("404 NOT_FOUND \"user with ID: " + id + " not found\"", result.getResolvedException().getMessage()));
 
-        verify(usersService, times(0)).save(any());
+        verify(usersService, times(0)).update(any(), anyString());
     }
 
     @Test

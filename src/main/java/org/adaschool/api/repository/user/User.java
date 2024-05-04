@@ -1,16 +1,45 @@
 package org.adaschool.api.repository.user;
 
+import io.swagger.v3.oas.annotations.Hidden;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Date;
 
+@Schema(description = "Objeto que representa a un Usuario")
 public class User {
 
+    @Schema(
+            description = "Identificador unico",
+            type = "string",
+            example = "1")
     private final String id;
+
+    @Schema(
+            description = "Fecha de creacion",
+            type = "Date",
+            example = "2024-05-04T22:49:38.155Z")
     private final Date createdAt;
+
+    @Schema(
+            description = "Nombre",
+            type = "string",
+            example = "Juan")
     private String name;
+
+    @Schema(
+            description = "Apellido",
+            type = "string",
+            example = "Perez")
     private String lastName;
+
+    @Schema(
+            description = "Email",
+            type = "string",
+            example = "usuario@empresa.com")
     private String email;
+
+    @Hidden
     private String passwordHash;
 
     public User() {

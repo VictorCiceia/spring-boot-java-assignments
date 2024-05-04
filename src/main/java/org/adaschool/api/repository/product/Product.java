@@ -1,21 +1,51 @@
 package org.adaschool.api.repository.product;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.util.List;
 
+@Schema(description = "Objeto que representa a un Producto")
 public class Product {
 
+    @Schema(
+            description = "Identificador unico",
+            type = "string",
+            example = "1")
     private final String id;
 
+    @Schema(
+            description = "Nombre",
+            type = "string",
+            example = "Tornillo")
     private String name;
 
+    @Schema(
+            description = "Descripcion",
+            type = "string",
+            example = "Rosca fina")
     private String description;
 
+    @Schema(
+            description = "Categoria",
+            type = "string",
+            example = "Ferreteria")
     private String category;
 
+    @Schema(description = "Etiquetas",
+            type = "List",
+            example = "[\"Hierro\", \"Rosca\", \"Nuevo\"]")
     private List<String> tags;
 
+    @Schema(
+            description = "Precio",
+            type = "double",
+            example = "200.5")
     private double price;
 
+    @Schema(
+            description = "Url de la Imagen",
+            type = "string",
+            example = "/imagenes/img1")
     private String imageUrl;
 
     public Product() {

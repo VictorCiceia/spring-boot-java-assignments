@@ -20,30 +20,33 @@ public class ProductsServiceMongoDb implements ProductsService {
 
     @Override
     public Product save(Product product) {
-        //TODO implement this method
-        return null;
+        return this.productMongoRepository.save(product);
     }
 
     @Override
     public Optional<Product> findById(String id) {
-        //TODO implement this method
-        return Optional.empty();
+        return this.productMongoRepository.findById(id);
     }
 
     @Override
     public List<Product> all() {
-        //TODO implement this method
-        return null;
+        return this.productMongoRepository.findAll();
     }
 
     @Override
     public void deleteById(String id) {
-        //TODO implement this method
+        this.productMongoRepository.deleteById(id);
     }
 
     @Override
     public Product update(Product product, String productId) {
-        //TODO implement this method
-        return null;
+        final Product p = this.productMongoRepository.findById(productId).get();
+        p.setName(product.getName());
+        p.setCategory(product.getCategory());
+        p.setDescription(product.getDescription());
+        p.setTags(product.getTags());
+        p.setPrice(product.getPrice());
+        p.setImageUrl(product.getImageUrl());
+        return this.productMongoRepository.save(p);
     }
 }
